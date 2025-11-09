@@ -1,6 +1,6 @@
 namespace Vinder.Comanda.Payments.WebApi.Extensions;
 
-[ExcludeFromCodeCoverage(Justification = "contains only dependency injection registration with no business logic.")]
+[ExcludeFromCodeCoverage(Justification = "contains only dependency injection registration with no business logic")]
 public static class AuthenticationExtension
 {
     public static void AddIdentityServer(this IServiceCollection services)
