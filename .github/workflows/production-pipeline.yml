@@ -53,7 +53,7 @@ jobs:
               -e Settings__Federation__ClientId="${{ secrets.FEDERATION_CLIENTID }}" \
               -e Settings__Federation__ClientSecret="${{ secrets.FEDERATION_CLIENTSECRET }}" \
               -e Settings__AbacatePay__Credential="${{ secrets.ABACATEPAY_CREDENTIAL }}" \
-              -e Settings__AbacatePay__Url="${{ secrets.ABACATEPAY_Url }}" \
+              -e Settings__AbacatePay__Url="${{ secrets.ABACATEPAY_URL }}" \
               $IMAGE
 
             echo "cleaning up old images..."
