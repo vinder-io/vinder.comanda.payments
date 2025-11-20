@@ -4,5 +4,6 @@ public enum PaymentMethod
 {
     Unspecified,
     Pix,
-    Card
+    Card,
+    Cash
 }
