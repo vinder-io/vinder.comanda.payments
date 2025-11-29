@@ -5,6 +5,7 @@ namespace Vinder.Comanda.Payments.WebApi.Controllers;
 public sealed class PaymentsController(IDispatcher dispatcher) : ControllerBase
 {
     [HttpGet]
+    [Authorize(Roles = Permissions.ViewPayments)]
     public async Task<IActionResult> GetPaymentsAsync(
         [FromQuery] PaymentsFetchParameters request, CancellationToken cancellation)
     {
@@ -19,6 +20,7 @@ public sealed class PaymentsController(IDispatcher dispatcher) : ControllerBase
     }
 
     [HttpPost("offline")]
+    [Authorize(Roles = Permissions.MakePayment)]
     public async Task<IActionResult> CreateOfflinePaymentChargeAsync(
         [FromBody] OfflinePaymentChargeScheme request,  CancellationToken cancellation)
     {
@@ -33,7 +35,7 @@ public sealed class PaymentsController(IDispatcher dispatcher) : ControllerBase
         };
     }
 
-    [HttpPost]
+    [HttpPost("online")]
     [Authorize(Roles = Permissions.MakePayment)]
     public async Task<IActionResult> CreateCheckoutSessionAsync(
         [FromBody] CheckoutSessionCreationScheme request, CancellationToken cancellation)
