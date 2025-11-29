@@ -19,7 +19,26 @@ public sealed class PaymentsController(IDispatcher dispatcher) : ControllerBase
         };
     }
 
-    [HttpPost]
+    [HttpPost("offline")]
+    [Authorize(Roles = Permissions.MakePayment)]
+    public async Task<IActionResult> CreateOfflinePaymentChargeAsync(
+        [FromBody] OfflinePaymentChargeScheme request, CancellationToken cancellation)
+    {
+        var result = await dispatcher.DispatchAsync(request, cancellation);
+
+        // we know the switch here is not strictly necessary since we only handle the success case,
+        // but we keep it for consistency with the rest of the codebase and to follow established patterns.
+        return result switch
+        {
+            { IsSuccess: true } when result.Data is not null =>
+                StatusCode(StatusCodes.Status201Created, result.Data),
+
+            { IsFailure: true } when result.Error == PaymentErrors.MethodNotAllowed =>
+                StatusCode(StatusCodes.Status422UnprocessableEntity, result.Error)
+        };
+    }
+
+    [HttpPost("online")]
     [Authorize(Roles = Permissions.MakePayment)]
     public async Task<IActionResult> CreateCheckoutSessionAsync(
         [FromBody] CheckoutSessionCreationScheme request, CancellationToken cancellation)

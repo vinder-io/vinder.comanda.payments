@@ -1,4 +1,4 @@
-namespace Vinder.Comanda.Payments.Domain.Entities.Enums;
+﻿namespace Vinder.Comanda.Payments.Domain.Concepts;
 
 public enum Status
 {

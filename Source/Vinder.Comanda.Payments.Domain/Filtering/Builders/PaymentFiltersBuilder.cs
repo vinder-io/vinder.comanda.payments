@@ -27,7 +27,7 @@ public sealed class PaymentFiltersBuilder :
         return this;
     }
 
-    public PaymentFiltersBuilder WithMethod(PaymentMethod? method)
+    public PaymentFiltersBuilder WithMethod(Method? method)
     {
         _filters.Method = method;
         return this;

@@ -1,5 +1,5 @@
 global using Vinder.Comanda.Payments.Domain.Entities;
-global using Vinder.Comanda.Payments.Domain.Entities.Enums;
+global using Vinder.Comanda.Payments.Domain.Errors;
 global using Vinder.Comanda.Payments.Domain.Concepts;
 global using Vinder.Comanda.Payments.Domain.Repositories;
 global using Vinder.Comanda.Payments.Domain.Filtering;

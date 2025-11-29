@@ -9,7 +9,7 @@ public sealed record PaymentsFetchParameters :
     public string? ReferenceId { get; set; }
 
     public Status? Status { get; set; }
-    public PaymentMethod? Method { get; set; }
+    public Method? Method { get; set; }
 
     public SortFilters? Sort { get; set; }
     public PaginationFilters? Pagination { get; set; }

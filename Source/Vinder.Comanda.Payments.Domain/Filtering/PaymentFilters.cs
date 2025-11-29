@@ -7,7 +7,7 @@ public sealed class PaymentFilters : Filters
     public string? ReferenceId { get; set; }
 
     public Status? Status { get; set; }
-    public PaymentMethod? Method { get; set; }
+    public Method? Method { get; set; }
 
     public decimal? MinAmount { get; set; }
     public decimal? MaxAmount { get; set; }

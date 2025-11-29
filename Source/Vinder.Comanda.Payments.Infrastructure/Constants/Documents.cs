@@ -6,6 +6,7 @@ public static class Documents
     {
         public const string Identifier = "_id";
         public const string Status = "Status";
+        public const string Method = "Method";
         public const string Amount = "Amount";
         public const string PayerId = "Payer.Identifier";
         public const string ExternalId = "Metadata.Identifier";
