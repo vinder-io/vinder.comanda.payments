@@ -22,7 +22,7 @@ public sealed class PaymentsController(IDispatcher dispatcher) : ControllerBase
     [HttpPost("offline")]
     [Authorize(Roles = Permissions.MakePayment)]
     public async Task<IActionResult> CreateOfflinePaymentChargeAsync(
-        [FromBody] OfflinePaymentChargeScheme request,  CancellationToken cancellation)
+        [FromBody] OfflinePaymentChargeScheme request, CancellationToken cancellation)
     {
         var result = await dispatcher.DispatchAsync(request, cancellation);
 
@@ -32,6 +32,9 @@ public sealed class PaymentsController(IDispatcher dispatcher) : ControllerBase
         {
             { IsSuccess: true } when result.Data is not null =>
                 StatusCode(StatusCodes.Status201Created, result.Data),
+
+            { IsFailure: true } when result.Error == PaymentErrors.MethodNotAllowed =>
+                StatusCode(StatusCodes.Status422UnprocessableEntity, result.Error)
         };
     }
 
