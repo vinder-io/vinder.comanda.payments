@@ -8,4 +8,5 @@ public sealed record PaymentScheme
 
     public User Payer { get; init; } = default!;
     public Status Status { get; init; } = default!;
+    public Method Method { get; init; } = default!;
 }
