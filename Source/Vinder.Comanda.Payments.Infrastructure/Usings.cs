@@ -4,10 +4,8 @@ global using Vinder.Internal.Infrastructure.Persistence.Pipelines;
 global using Vinder.Internal.Infrastructure.Persistence.Repositories;
 
 global using Vinder.Comanda.Payments.Domain.Entities;
-global using Vinder.Comanda.Payments.Domain.Entities.Enums;
 global using Vinder.Comanda.Payments.Domain.Filtering;
 global using Vinder.Comanda.Payments.Domain.Repositories;
-global using Vinder.Comanda.Payments.Domain.Concepts;
 
 global using Vinder.Comanda.Payments.Application.Gateways;
 global using Vinder.Comanda.Payments.Application.Payloads.Payment;
