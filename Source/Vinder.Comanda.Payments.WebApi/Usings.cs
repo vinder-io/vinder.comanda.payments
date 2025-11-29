@@ -4,6 +4,7 @@ global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Authorization;
 
 global using Vinder.Comanda.Payments.WebApi.Extensions;
+global using Vinder.Comanda.Payments.Domain.Errors;
 
 global using Vinder.Comanda.Payments.Application.Payloads.Traceability;
 global using Vinder.Comanda.Payments.Application.Payloads.Payment;
