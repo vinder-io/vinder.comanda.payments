@@ -11,7 +11,10 @@ public static class PaymentPipelineDefinition
             FilterDefinitions.MatchIfNotEmpty(Documents.Payment.PayerId, filters.PayerId),
             FilterDefinitions.MatchIfNotEmpty(Documents.Payment.ExternalId, filters.ExternalId),
             FilterDefinitions.MatchIfNotEmpty(Documents.Payment.ReferenceId, filters.ReferenceId),
+
             FilterDefinitions.MatchIfNotEmptyEnum(Documents.Payment.Status, filters.Status),
+            FilterDefinitions.MatchIfNotEmptyEnum(Documents.Payment.Method, filters.Method),
+
             FilterDefinitions.MustBeWithinIfNotNull(Documents.Payment.CreatedAt, filters.CreatedAfter, filters.CreatedBefore),
             FilterDefinitions.MustBeWithinIfNotNull(Documents.Payment.Amount, filters.MinAmount, filters.MaxAmount)
         };
