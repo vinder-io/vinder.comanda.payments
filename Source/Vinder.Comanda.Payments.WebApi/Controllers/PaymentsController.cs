@@ -50,8 +50,10 @@ public sealed class PaymentsController(IDispatcher dispatcher) : ControllerBase
             { IsSuccess: true } =>
                 StatusCode(StatusCodes.Status200OK, result.Data),
 
+            /* returning 502 Bad Gateway because an unexpected or invalid response was received from the external provider */
+            /* https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/502 */
             { IsFailure: true } =>
-                StatusCode(StatusCodes.Status400BadRequest, result.Error)
+                StatusCode(StatusCodes.Status502BadGateway, result.Error)
         };
     }
 }
