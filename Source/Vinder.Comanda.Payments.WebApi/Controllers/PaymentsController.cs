@@ -39,10 +39,17 @@ public sealed class PaymentsController(IDispatcher dispatcher) : ControllerBase
     }
 
     [HttpPost("online")]
-    [Authorize(Roles = Permissions.MakePayment)]
     public async Task<IActionResult> CreateCheckoutSessionAsync(
-        [FromBody] CheckoutSessionCreationScheme request, CancellationToken cancellation)
+        [FromBody] CheckoutSessionCreationScheme request, [FromHeader(Name = Headers.Credential)] string credential, CancellationToken cancellation)
     {
+        // this endpoint requires the payment gateway credential to be provided via request headers
+        // if it is not present, a 400 response is returned
+
+        if (string.IsNullOrWhiteSpace(credential))
+        {
+            return StatusCode(StatusCodes.Status400BadRequest, PaymentErrors.CredentialNotProvided);
+        }
+
         var result = await dispatcher.DispatchAsync(request, cancellation);
 
         return result switch
