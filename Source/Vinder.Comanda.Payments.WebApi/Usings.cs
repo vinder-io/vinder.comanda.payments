@@ -1,8 +1,11 @@
 global using System.Diagnostics.CodeAnalysis;
+global using System.Net.Http.Headers;
 
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Authorization;
 
+global using Vinder.Comanda.Payments.WebApi.Constants;
+global using Vinder.Comanda.Payments.WebApi.Interceptors;
 global using Vinder.Comanda.Payments.WebApi.Extensions;
 global using Vinder.Comanda.Payments.Domain.Errors;
 
