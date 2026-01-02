@@ -16,14 +16,13 @@ public sealed class CredentialInterceptor(IHttpContextAccessor accessor) : Deleg
             return base.SendAsync(request, cancellationToken);
         }
 
-        if (httpContext.Request.Headers.TryGetValue("x-credential", out var credentials))
+        if (httpContext.Request.Headers.TryGetValue(Headers.Credential, out var credentials))
         {
             var credential = credentials.FirstOrDefault();
             var authorization = new AuthenticationHeaderValue("Bearer", credential);
 
             // the credential captured from the incoming request is used as a bearer token for authorization
             // https://docs.abacatepay.com/pages/authentication
-
             if (!string.IsNullOrWhiteSpace(credential))
             {
                 request.Headers.Authorization = authorization;
