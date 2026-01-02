@@ -5,10 +5,16 @@ public static class HttpClientsExtension
 {
     public static void AddHttpClients(this IServiceCollection services, ISettings settings)
     {
-        services.AddHttpClient<IAbacatePayClient, AbacatePayClient>(client =>
+        // register transient lifetime interceptors here
+        // https://learn.microsoft.com/en-us/aspnet/web-api/overview/advanced/httpclient-message-handlers
+        services.AddTransient<CredentialInterceptor>();
+
+        var paymentClient = services.AddHttpClient<IAbacatePayClient, AbacatePayClient>(client =>
         {
-            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {settings.AbacatePay.Credential}");
             client.BaseAddress = new Uri(settings.AbacatePay.Url);
+            client.Timeout = TimeSpan.FromSeconds(30);
         });
+
+        paymentClient.AddHttpMessageHandler<CredentialInterceptor>();
     }
 }
