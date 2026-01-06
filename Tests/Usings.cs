@@ -22,8 +22,6 @@ global using Vinder.Comanda.Payments.Domain.Filtering;
 
 global using Vinder.Comanda.Payments.Application.Payloads;
 
-global using Vinder.Comanda.Payments.CrossCutting.Constants;
-
 global using Vinder.Internal.Essentials.Patterns;
 global using Vinder.Internal.Essentials.Utilities;
 
