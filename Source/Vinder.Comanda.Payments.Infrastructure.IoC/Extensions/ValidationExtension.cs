@@ -7,5 +7,6 @@ public static class ValidationExtension
     {
         services.AddTransient<IValidator<CheckoutSessionCreationScheme>, CheckoutSessionCreationSchemeValidator>();
         services.AddTransient<IValidator<OfflinePaymentChargeScheme>, OfflinePaymentChargeSchemeValidator>();
+        services.AddTransient<IValidator<PaymentStatusUpdateScheme>, PaymentStatusUpdateSchemeValidator>();
     }
 }

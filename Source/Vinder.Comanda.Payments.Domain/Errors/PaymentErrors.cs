@@ -11,4 +11,9 @@ public static class PaymentErrors
         Code: "#COMANDA-ERROR-3AF99",
         Description: "payment gateway credential was not provided"
     );
+
+    public static readonly Error PaymentDoesNotExist = new(
+        Code: "#COMANDA-ERROR-4A42E",
+        Description: "the specified payment does not exist"
+    );
 }

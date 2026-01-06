@@ -61,4 +61,21 @@ public sealed class PaymentsController(IDispatcher dispatcher) : ControllerBase
                 StatusCode(StatusCodes.Status400BadRequest, result.Error)
         };
     }
+
+    [HttpPut("{paymentId}/status")]
+    [Authorize(Roles = Permissions.PaymentUpdate)]
+    public async Task<IActionResult> UpdatePaymentStatusAsync(
+        [FromRoute] string paymentId, [FromBody] PaymentStatusUpdateScheme request, CancellationToken cancellation)
+    {
+        var result = await dispatcher.DispatchAsync(request with { Identifier = paymentId }, cancellation);
+
+        return result switch
+        {
+            { IsSuccess: true } when result.Data is not null =>
+                StatusCode(StatusCodes.Status200OK, result.Data),
+
+            { IsFailure: true } when result.Error == PaymentErrors.PaymentDoesNotExist =>
+                StatusCode(StatusCodes.Status404NotFound, result.Error),
+        };
+    }
 }

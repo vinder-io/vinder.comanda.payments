@@ -1,3 +1,5 @@
+global using System.Text.Json.Serialization;
+
 global using Vinder.Comanda.Payments.Domain.Entities;
 global using Vinder.Comanda.Payments.Domain.Errors;
 global using Vinder.Comanda.Payments.Domain.Concepts;
