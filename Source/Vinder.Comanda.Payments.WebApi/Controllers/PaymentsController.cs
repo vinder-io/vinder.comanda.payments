@@ -39,6 +39,7 @@ public sealed class PaymentsController(IDispatcher dispatcher) : ControllerBase
     }
 
     [HttpPost("online")]
+    [Authorize(Roles = Permissions.MakePayment)]
     public async Task<IActionResult> CreateCheckoutSessionAsync(
         [FromBody] CheckoutSessionCreationScheme request, [FromHeader(Name = Headers.Credential)] string credential, CancellationToken cancellation)
     {
