@@ -15,7 +15,6 @@ global using Vinder.Comanda.Payments.Application.Payloads.Events.Billing;
 
 global using Vinder.Comanda.Payments.Infrastructure.IoC.Extensions;
 global using Vinder.Comanda.Payments.CrossCutting.Configurations;
-global using Vinder.Comanda.Payments.CrossCutting.Constants;
 
 global using Vinder.Comanda.Internal.Contracts.Clients;
 global using Vinder.Comanda.Internal.Contracts.Clients.Interfaces;
